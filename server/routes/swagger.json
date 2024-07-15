@@ -1,0 +1,175 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Angular Template",
+    "description": "",
+    "version": "1.0",
+    "termsOfService": "https://TODO.com/legal/terms-of-use",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "host": "localhost:8081",
+  "basePath": "/api",
+  "paths": {
+    "/auth/check": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Check if a user is authenticated and get the user object if they are.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User is authenticated.",
+            "schema": { "$ref": "#components/schemas/User" }
+          },
+          "440": { "description": "User not authenticated." }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Logs the user in.",
+        "consumes": "application/json",
+        "parameters": [{
+          "in": "body",
+          "name": "Parameters",
+          "description": "The user's info",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["Username", "Password"],
+            "properties": {
+              "Username": { "type": "string" },
+              "Password": { "type": "string" },
+              "RememberMe": { "type": "boolean" }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "User logged in.",
+            "schema": { "$ref": "#components/schemas/User" }
+          },
+          "440": { "description": "User not authenticated." }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Creates a user account.",
+        "consumes": "application/json",
+        "parameters": [{
+          "in": "body",
+          "name": "Parameters",
+          "description": "The user's info",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["username", "password", "confirmPassword", "email", "firstName", "lastName"],
+            "properties": {
+              "username": { "type": "string" },
+              "password": { "type": "string" },
+              "confirmPassword": { "type": "string" },
+              "email": { "type": "string" },
+              "firstName": { "type": "string" },
+              "lastName": { "type": "string" }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "User account created.",
+            "schema": { "$ref": "#components/schemas/User" }
+          },
+          "440": { "description": "User not authenticated." }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Logs the user out.",
+        "consumes": "application/json",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User is logged out."
+          }
+        }
+      }
+    },
+    "/user/forgot-password": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Sends an email to the user with a password reset code.",
+        "consumes": "application/json",
+        "parameters": [{
+          "in": "body",
+          "name": "Parameters",
+          "description": "The user's info",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["Email"],
+            "properties": {
+              "Email": { "type": "string" }
+            }
+          }
+        }],
+        "responses": {
+          "200": { "description": "Email sent." },
+          "440": { "description": "User not authenticated." },
+          "500": { "description": "Email not found." }
+        }
+      }
+    },
+    "/user/reset-password": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Resets the user's password.",
+        "consumes": "application/json",
+        "parameters": [{
+          "in": "body",
+          "name": "Parameters",
+          "description": "The user's info",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["Password", "Code"],
+            "properties": {
+              "Password": { "type": "string" },
+              "Code": { "type": "string" }
+            }
+          }
+        }],
+        "responses": {
+          "200": { "description": "Password reset." },
+          "440": { "description": "User not authenticated." },
+          "500": { "description": "Invalid code." }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "Email": { "type": "string" },
+          "FirstName": { "type": "string" },
+          "IsActive": { "type": "boolean" },
+          "LastName": { "type": "string" },
+          "UserId": { "type": "number" },
+          "UserRoleId": { "type": "number" },
+          "Username": { "type": "string" }
+        }
+      }
+    }
+  }
+}

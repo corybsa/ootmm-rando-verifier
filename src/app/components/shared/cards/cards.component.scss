@@ -1,0 +1,157 @@
+@use '/src/assets/styles/variables.scss' as *;
+
+.cdk-drop-list.cdk-drop-list-dragging {
+  .card-action {
+    display: none;
+  }
+}
+
+.card-container {
+  position: relative;
+  max-width: 500px;
+  margin: auto auto 5px;
+
+  .card-action {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 100%;
+
+    > mat-icon {
+      margin: 0;
+    }
+  
+    &.primary {
+      background-color: $accent-color;
+      color: white;
+    }
+
+    &.danger {
+      background-color: $danger-color;
+      color: white;
+    }
+  
+    &.other {
+      background-color: initial;
+    }
+  
+    &:nth-of-type(2) {
+      right: 69px;
+    }
+  }
+}
+
+mat-card {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0, 1, 0, 1);
+  z-index: 2;
+  padding: 1rem 2.3rem;
+
+  &.cdk-drag-preview {
+    transition: transform 0s;
+  }
+
+  &.static-list {
+    padding-left: 1rem;
+  }
+
+  &.reorderable {
+    padding-left: 2rem;
+  }
+
+  &.revealing {
+    transition: none;
+  }
+
+  .drag-handle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    padding: 15px 5px;
+  }
+
+  mat-card-title {
+    word-break: break-word;
+    margin-left: 5px;
+  
+    &.done-list > span {
+      opacity: 0.53;
+    }
+  
+    > span {
+      display: inline-block;
+  
+      &.delete-button.item-done,
+      &.delete-button.undo-done {
+        width: calc(100% - 49px);
+      }
+
+      &.item-likes {
+        position: absolute;
+        right: 15px;
+        top: calc(50% + 10px);
+        transform: translate(-8px, -50%);
+        font-size: 1rem;
+      }
+    }
+
+    .recipe-is-shared {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-10px, -50%);
+    }
+  }
+
+  mat-card-subtitle {
+    margin-left: 5px;
+  }
+
+  mat-icon {
+    &.add-to-cart {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-5px, -50%);
+      cursor: pointer;
+      padding: 5px;
+    }
+  
+    &.delete-button {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translate(0, -50%);
+      cursor: pointer;
+      color: $danger-color;
+  
+      &.secondary {
+        right: 40px;
+      }
+    }
+  
+    &.item-done {
+      color: $accent-color;
+    }
+  
+    &.item-done,
+    &.undo-done {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translate(0, -50%);
+    }
+
+    &.likes {
+      position: absolute;
+      top: calc(50% - 10px);
+      right: 13px;
+      transform: translate(0, -50%);
+      color: #f44234;
+      font-size: 1.2rem;
+    }
+  }
+}

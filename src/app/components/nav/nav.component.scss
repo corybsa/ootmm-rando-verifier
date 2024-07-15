@@ -1,0 +1,100 @@
+@use '/src/assets/styles/variables.scss' as *;
+@use '/src/assets/styles/mixins.scss' as *;
+
+mat-drawer-container {
+  min-height: 100%;
+  background-color: $background-color;
+}
+
+mat-drawer {
+  @include mobile-styles {
+    width: 80%;
+  }
+
+  @include tablet-styles {
+    width: 70%;
+  }
+
+  @include laptop-styles {
+    width: 40%;
+  }
+
+  @include desktop-styles {
+    width: 30%;
+  }
+
+  @include large-screen-styles {
+    width: 20%;
+    max-width: 500px;
+  }
+}
+
+mat-drawer-content {
+  position: absolute;
+  inset: 0;
+}
+
+.top-bar {
+  height: 50px;
+  background-color: $primary-color;
+  color: white;
+  position: static;
+  width: 100%;
+  z-index: 10;
+
+  mat-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 13px;
+    left: 13px;
+    color: white;
+    z-index: 2;
+  }
+
+  span {
+    position: absolute;
+    top: 17px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 1;
+  }
+}
+
+.nav-header {
+  height: 50px;
+  background-color: $primary-color;
+
+  mat-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 13px;
+    left: 13px;
+    color: white;
+    z-index: 2;
+  }
+}
+
+:host::ng-deep {
+  .nav-item {
+    display: block;
+    margin-top: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav-item span {
+    position: relative;
+    top: -6px;
+    left: 10px;
+  }
+
+  .nav-separator {
+    height: 1px;
+    background-color: hsl(0, 0%, 83%);
+    margin: 10px 5px 0px;
+  }
+}

@@ -1,0 +1,17 @@
+<ng-container *appLet="user$ | async as user">
+  <!-- Example of nested nav items -->
+  <!-- <app-nav-item folder label="Folder name">
+    <app-nav-item link="link to page" icon="list" label="Item name"></app-nav-item>
+  </app-nav-item> -->
+
+  <app-nav-item link="/home" icon="home" label="Home"></app-nav-item>
+  <app-nav-item link="/settings" icon="settings" label="Settings"></app-nav-item>
+  
+  <div class="logout-button">
+    <mat-divider></mat-divider>
+    <a (click)="logout()" class="nav-item">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </a>
+  </div>
+</ng-container>

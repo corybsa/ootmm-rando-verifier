@@ -1,0 +1,135 @@
+<h2>Your Cookie Preferences</h2>
+
+<p>
+  We use different types of cookies to optimize your experience on our website.
+  Click on the categories below to learn more about their purposes. You may
+  choose which types of cookies to allow and can change your preferences at any
+  time. Remember that disabling cookies may affect your experience on the website.
+  You can learn more about how we use cookies by visiting our
+  <a class="bs-link" (click)="openCookiePolicy()">Cookie Policy</a> and
+  <a class="bs-link" (click)="openPrivacyPolicy()">Privacy Policy</a>.
+</p>
+
+<mat-divider></mat-divider>
+
+<mat-checkbox [checked]="true" [disabled]="true">Essential ({{ essentialCookies.length }})</mat-checkbox>
+<a class="bs-link cookie-details" (click)="openEssentialCookiesDetails()">Details</a>
+<p>
+  These cookies are necessary to the core functionality of our website and
+  some of its features, such as access to secure areas.
+</p>
+
+<mat-divider></mat-divider>
+
+<mat-checkbox [(ngModel)]="cookiePrefs.saveFunctionalityCookies" (change)="onChange()">Performance and Functionality ({{ functionalCookies.length }})</mat-checkbox>
+<a class="bs-link cookie-details" (click)="openFunctionalCookiesDetails()">Details</a>
+<p>
+  These cookies are used to enhance the performance and functionality of our
+  websites but are nonessential to their use. However, without these cookies,
+  certain functionality (like videos) may become unavailable.
+</p>
+
+<mat-divider></mat-divider>
+
+<mat-checkbox [(ngModel)]="cookiePrefs.saveAnalyticCookies" (change)="onChange()">Analytics and Customization (0)</mat-checkbox>
+<a class="bs-link cookie-details" (click)="openOtherCookiesDetails()">Details</a>
+<p>
+  These cookies collect information that can help us understand how our
+  websites are being used. This information can also be used to measure
+  effectiveness in our marketing campaigns or to curate a personalized site
+  experience for you.
+</p>
+
+<mat-divider></mat-divider>
+
+<mat-checkbox [(ngModel)]="cookiePrefs.saveAdvertisingCookies" (change)="onChange()">Advertising (0)</mat-checkbox>
+<a class="bs-link cookie-details" (click)="openOtherCookiesDetails()">Details</a>
+<p>
+  These cookies are used to make advertising messages more relevant to you.
+  They prevent the same ad from continuously reappearing, ensure that ads
+  are properly displayed for advertisers, and in some cases select
+  advertisements that are based on your interests.
+</p>
+
+<mat-divider></mat-divider>
+
+<mat-checkbox [(ngModel)]="cookiePrefs.saveSocialNetworkingCookies" (change)="onChange()">Social networking (0)</mat-checkbox>
+<a class="bs-link cookie-details" (click)="openOtherCookiesDetails()">Details</a>
+<p>
+  These cookies enable you to share our website's content through third-party
+  social networks and other websites. These cookies may also be used for
+  advertising purposes.
+</p>
+
+<mat-divider></mat-divider>
+
+<mat-checkbox [(ngModel)]="cookiePrefs.saveUnclassifiedCookies" (change)="onChange()">Unclassified (0)</mat-checkbox>
+<a class="bs-link cookie-details" (click)="openOtherCookiesDetails()">Details</a>
+<p>
+  These are cookies that have not yet been categorized. We are in the process
+  of classifying these cookies with the help of their providers.
+</p>
+
+<ng-template #cookiePolicyDialogRef>
+  <mat-dialog-content>
+    <app-cookie-policy [showBack]="false"></app-cookie-policy>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Back</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #privacyPolicyDialogRef>
+  <mat-dialog-content>
+    <app-privacy-policy [showBack]="false"></app-privacy-policy>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Back</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #essentialCookiesDialogRef>
+  <mat-dialog-content>
+    <h2>Essential Cookies</h2>
+    <h3>Provider: TODO.com</h3>
+    <mat-card *ngFor="let cookie of essentialCookies">
+      <mat-card-title style="padding: 0.5rem 0 0 1rem;">{{ cookie.name }}</mat-card-title>
+      <mat-card-content>
+        <p>Purpose: {{ cookie.purpose }}</p>
+        <p>Type: {{ cookie.type }}</p>
+        <p>Expires: {{ cookie.expires }}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Back</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #functionalCookiesDialogRef>
+  <mat-dialog-content>
+    <h2>Performance and Functionality Cookies</h2>
+    <h3>Provider: TODO.com</h3>
+    <mat-card *ngFor="let cookie of functionalCookies">
+      <mat-card-title style="padding: 0.5rem 0 0 1rem;">{{ cookie.name }}</mat-card-title>
+      <mat-card-content>
+        <p>Purpose: {{ cookie.purpose }}</p>
+        <p>Type: {{ cookie.type }}</p>
+        <p>Expires: {{ cookie.expires }}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Back</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #otherCookiesDialogRef>
+  <mat-dialog-content>
+    <h2>No Cookies</h2>
+    <p>We don't serve any cookies of this type.</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Back</button>
+  </mat-dialog-actions>
+</ng-template>

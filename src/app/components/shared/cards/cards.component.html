@@ -1,0 +1,42 @@
+<div
+  cdkDropList
+  (cdkDropListDropped)="drop($event)"
+>
+  <div *ngFor="let item of data" class="card-container">
+    <mat-card
+      [class.reorderable]="reorderable"
+      [class.static-list]="!reorderable"
+      cdkDrag
+      [cdkDragDisabled]="!reorderable"
+      (click)="click(item, $event)"
+      (mousedown)="startDrag($event)"
+      (mousemove)="drag($event)"
+      (mouseup)="endDrag()"
+      (touchstart)="startDrag($event)"
+      (touchmove)="drag($event)"
+      (touchend)="endDrag()"
+      (touchcancel)="endDrag()"
+    >
+      @if(reorderable) {
+        <mat-icon class="drag-handle" cdkDragHandle>drag_handle</mat-icon>
+      }
+      <mat-card-title>
+        <span>
+          <ng-content select="[title]"></ng-content>
+        </span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <ng-content select="[subtitle]"></ng-content>
+      </mat-card-subtitle>
+    </mat-card>
+
+    <button
+      *ngFor="let button of buttons"
+      mat-stroked-button
+      class="card-action"
+      [ngClass]="button!.color"
+      (click)="buttonClick(button!, item)">
+      <mat-icon>{{ getButtonIcon(button!, item) }}</mat-icon>
+    </button>
+  </div>
+</div>

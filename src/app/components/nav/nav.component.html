@@ -1,0 +1,19 @@
+<mat-drawer-container (backdropClick)="closeDrawer()">
+  <mat-drawer #drawer [opened]="show$ | async">
+    <div class="nav-header">
+      <mat-icon (click)="closeDrawer()">close</mat-icon>
+    </div>
+    <router-outlet name="nav"></router-outlet>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="top-bar">
+      <ng-container *ngIf="user$ | async as user">
+        <mat-icon *ngIf="showHamburger(user)" (click)="openDrawer()">menu</mat-icon>
+      </ng-container>
+      <span>Angular Template</span>
+      <app-christmas *ngIf="isChristmas"></app-christmas>
+    </div>
+
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

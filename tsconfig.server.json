@@ -1,0 +1,15 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist-server",
+    "sourceMap": false,
+    "types": ["node"],
+    "target": "ESNext",
+    "module": "CommonJS"
+  },
+  "include": [
+    "server/**/*.ts",
+    "server/**/*.json"
+  ]
+}

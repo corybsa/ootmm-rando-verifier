@@ -1,0 +1,22 @@
+/* override ad blocker extensions */
+:host {
+  display: initial !important;
+  height: initial !important;
+  z-index: 0 !important;
+  visibility: visible !important;
+  width: initial !important;
+  overflow: initial !important;
+}
+
+iframe {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 120px);
+  top: 50px;
+  left: 0;
+
+  &.from-settings {
+    height: calc(100% - 165px);
+    top: 95px;
+  }
+}

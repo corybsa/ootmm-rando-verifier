@@ -1,0 +1,40 @@
+<ng-container *ngIf="showBanner">
+  <div class="banner-backdrop" (click)="hideBanner($event)">
+    <div class="banner-container">
+      <p>We use cookies to improve user experience. By clicking "Accept", you agree to our website's cookie use as described in our <a class="bs-link" (click)="openCookiePolicy()">Cookie Policy</a>. You can change your cookie settings at any time by clicking “Preferences.”</p>
+      <div class="actions">
+        <button mat-button (click)="openPreferences()">Preferences</button>
+        <button mat-button (click)="declineCookies()">Decline</button>
+        <button mat-raised-button color="primary" (click)="acceptCookies()">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #cookiePolicyDialogRef>
+    <mat-dialog-content>
+      <app-cookie-policy [showBack]="false"></app-cookie-policy>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </ng-template>
+
+  <ng-template #cookiePreferencesDialogRef>
+    <mat-dialog-content>
+      <app-cookie-preferences
+        #preferences
+        (change)="onCookiePreferenceChange()"
+      ></app-cookie-preferences>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <ng-container *ngIf="!isPreferencesChanged">
+        <button mat-stroked-button mat-dialog-close (click)="declineCookies()">Decline All</button>
+        <button mat-stroked-button mat-dialog-close (click)="acceptCookies()">Accept All</button>
+      </ng-container>
+      <ng-container *ngIf="isPreferencesChanged">
+        <button mat-stroked-button (click)="reset(preferences)">Discard Changes</button>
+        <button mat-stroked-button mat-dialog-close (click)="showBanner = false">Save and finish</button>
+      </ng-container>
+    </mat-dialog-actions>
+  </ng-template>
+</ng-container>

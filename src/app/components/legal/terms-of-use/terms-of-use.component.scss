@@ -1,0 +1,12 @@
+iframe {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 120px);
+  top: 50px;
+  left: 0;
+
+  &.from-settings {
+    height: calc(100% - 165px);
+    top: 95px;
+  }
+}

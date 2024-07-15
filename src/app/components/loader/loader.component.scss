@@ -1,0 +1,28 @@
+@use '/src/assets/styles/variables.scss' as *;
+
+:host {
+  .full-screen-loader {
+    background-color: hsla(0, 0%, 0%, 0.5);
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+  }
+
+  &::ng-deep {
+    mat-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      circle {
+        stroke: $primary-color;
+      }
+    }
+
+    mat-progress-bar {
+      position: absolute;
+      z-index: 9;
+    }
+  }
+}

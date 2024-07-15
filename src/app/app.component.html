@@ -1,0 +1,11 @@
+<app-nav>
+  <app-loader></app-loader>
+  <div id="page-container" cdkScrollable>
+    <router-outlet></router-outlet>
+  </div>
+  <ng-container *ngIf="user$ | async as user">
+    <app-bottom-bar *ngIf="showBottomBar(user)"></app-bottom-bar>
+  </ng-container>
+  <!-- TODO: uncomment this if the app is going to be used by the general public -->
+  <!-- <app-cookie-banner></app-cookie-banner> -->
+</app-nav>

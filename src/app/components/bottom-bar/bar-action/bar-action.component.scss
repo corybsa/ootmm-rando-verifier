@@ -1,0 +1,23 @@
+@use '/src/assets/styles/variables.scss' as *;
+
+.action {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: hsla(0, 0%, 0%, 0.87);
+  font-size: 0.8rem;
+
+  &.active {
+    color: $primary-color;
+  }
+
+  > mat-icon {
+    font-size: 1.3rem;
+  }
+
+  span {
+    display: block;
+  }
+}

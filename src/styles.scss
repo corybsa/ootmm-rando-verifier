@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'assets/styles/variables.scss' as *;
+@use 'assets/styles/theme.scss';
+
+html, body { height: 100%; overflow: hidden; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  .nav-item {
+    color: black;
+  }
+}
+
+body.dark-mode {
+  .mat-drawer-content {
+    background-color: #282828;
+  }
+
+  app-bottom-bar {
+    background-color: #383838;
+
+    .action:not(.active) {
+      color: white;
+    }
+  }
+
+  .nav-item:not(.active) {
+    color: white;
+  }
+}
+
+.mat-chip-selected {
+  background-color: $primary-color !important;
+  color: white !important;
+}
+
+a.bs-link {
+  color: $accent-color !important;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer !important;
+}
+
+.form-error {
+  color: $danger-color;
+}
+
+.actions {
+  text-align: right;
+}
+
+mat-icon.drag-handle {
+  cursor: ns-resize !important;
+}
+
+mat-chip-list mat-chip {
+  cursor: pointer !important;
+}
+
+mat-slider {
+  display: block;
+  pointer-events: none;
+
+  .mat-slider-thumb,
+  .mat-slider-thumb-label {
+    pointer-events: all;
+  }
+}
+
+.full-screen-dialog {
+  max-width: 100vw !important;
+
+  mat-dialog-container {
+    position: absolute;
+    inset: 0;
+  }
+
+  mat-dialog-content {
+    height: calc(100% - 55px);
+    max-height: initial !important;
+  }
+}
+
+mat-icon.help-explainer-icon {
+  position: relative;
+  top: 4px;
+  display: inline;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.cdk-drag-preview {
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging :not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1001 !important;
+}
+
+.timepicker-overlay {
+  z-index: 1001 !important;
+
+  .clock-face__inner {
+    display: none !important;
+  }
+}

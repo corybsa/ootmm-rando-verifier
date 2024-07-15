@@ -1,0 +1,64 @@
+<mat-card>
+  <mat-card-title>Cookie Preferences</mat-card-title>
+  <mat-card-content>Manage Cookie Preferences.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="editCookies()">Configure</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Privacy Policy</mat-card-title>
+  <mat-card-content>You can view our privacy policy here.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="viewPrivacyPolicy()">View</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Cookie Policy</mat-card-title>
+  <mat-card-content>You can view our cookie policy here.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="viewCookiePolicy()">View</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Terms of Use</mat-card-title>
+  <mat-card-content>You can view our terms and conditions here.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="viewTermsOfUse()">View</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Disclaimer</mat-card-title>
+  <mat-card-content>You can view our disclaimer here.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="viewDisclaimer()">View</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Data Subject Access Request</mat-card-title>
+  <mat-card-content>You can submit a DSAR request here. This is where you can manage what we do with your data.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="submitDsar()">Submit</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Toggle Dark Mode</mat-card-title>
+  <mat-card-content>Turn dark mode on and off.</mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="toggleDarkMode()">Toggle</button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #cookiePreferencesDialogRef>
+  <mat-dialog-content>
+    <app-cookie-preferences></app-cookie-preferences>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button color="primary" mat-stroked-button mat-dialog-close>Save</button>
+  </mat-dialog-actions>
+</ng-template>

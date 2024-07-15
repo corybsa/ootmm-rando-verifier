@@ -1,0 +1,50 @@
+<form [formGroup]="formGroup">
+  <h2>Welcome to Angular Template!</h2>
+  <img src="assets/icons/icon-144x144.png" alt="">
+
+  <div>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        required
+        maxlength="50"
+        type="text"
+        autocomplete="username"
+        formControlName="username">
+    </mat-form-field>
+  </div>
+  
+  <div>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        required
+        type="password"
+        autocomplete="current-password"
+        formControlName="password">
+    </mat-form-field>
+  </div>
+
+  <mat-checkbox formControlName="rememberMe" color="primary">Stay logged in</mat-checkbox>
+  
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      aria-label="login button"
+      [disabled]="formGroup.invalid"
+      (click)="login()">
+      Login
+    </button>
+  </div>
+
+  <p class="help-text">New around here? <a routerLink="/auth/register" class="bs-link">Create an account</a>.</p>
+
+  <p class="help-text"><a routerLink="/auth/forgot" class="bs-link">I forgot my password</a>.</p>
+</form>
+
+<!-- TODO: uncomment this if the app is going to be used by the general public -->
+<!-- <a href="https://app.termly.io/notify/21747064-79f3-4373-8daa-090f67164a1e" class="dsar-link bs-link">Do not sell my info</a> -->

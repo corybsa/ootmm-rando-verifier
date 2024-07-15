@@ -1,0 +1,20 @@
+@use "sass:color";
+
+$primary-color: #40cc40;
+$accent-color: #2b659e;
+$warn-color: #f4a634;
+$danger-color: #f44234;
+
+$primary-color-disabled: color.change($primary-color, $alpha: 0.73);
+$background-color: white;
+
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-desktop: 1200px;
+
+$top-bar-height: 50px;
+
+$bottom-bar-padding-top: 5px;
+$bottom-bar-height: 65px;
+$bottom-bar-height-total: calc($bottom-bar-height + $bottom-bar-padding-top);

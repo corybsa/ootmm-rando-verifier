@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18.x
+    commands:
+      - npm ci
+  build:
+    commands:
+      - npm run build-server
+      - npm run build-prod
+  post_build:
+    commands:
+      - rm -r .angular .vscode node_modules src
+      - rm .editorconfig .gitignore angular.json karma.conf.js
+      - rm tsconfig.json tsconfig.server.json tsconfig.app.json tsconfig.spec.json
+      - rm ngsw-config.json README.md
+      - cp -r server/email-templates/ dist-server/
+artifacts:
+  type: zip
+  base-directory: .
+  files:
+    - '**/*'

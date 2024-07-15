@@ -1,0 +1,29 @@
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  img {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+}
+
+.actions {
+  text-align: center;
+}
+
+.help-text {
+  margin-top: 10px;
+}
+
+.dsar-link {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  text-align: center;
+}

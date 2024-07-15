@@ -1,0 +1,13 @@
+@use '/src/assets/styles/variables.scss' as *;
+
+.active {
+  color: $primary-color;
+}
+
+.nav-item {
+  outline: none;
+}
+
+::ng-deep mat-expansion-panel mat-card {
+  margin-top: 5px;
+}

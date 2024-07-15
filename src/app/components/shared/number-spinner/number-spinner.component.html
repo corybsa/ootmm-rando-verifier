@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <mat-icon matPrefix (click)="decrement()">remove</mat-icon>
+  <input type="number" matInput readonly placeholder="0" [value]="value">
+  <mat-icon matSuffix (click)="increment()">add</mat-icon>
+</mat-form-field>

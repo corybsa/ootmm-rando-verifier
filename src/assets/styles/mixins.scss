@@ -1,0 +1,31 @@
+@use '/src/assets/styles/variables.scss' as *;
+
+@mixin mobile-styles {
+    @media screen and (max-width: $breakpoint-mobile) {
+        @content;
+    }
+}
+
+@mixin tablet-styles {
+    @media screen and (min-width: ($breakpoint-mobile + 1)) and (max-width: $breakpoint-tablet) {
+        @content;
+    }
+}
+
+@mixin laptop-styles {
+    @media screen and (min-width: ($breakpoint-tablet + 1)) and (max-width: $breakpoint-laptop) {
+        @content;
+    }
+}
+
+@mixin desktop-styles {
+    @media screen and (min-width: ($breakpoint-laptop + 1)) and (max-width: $breakpoint-desktop) {
+        @content;
+    }
+}
+
+@mixin large-screen-styles {
+    @media screen and (min-width: ($breakpoint-desktop + 1)) {
+        @content;
+    }
+}

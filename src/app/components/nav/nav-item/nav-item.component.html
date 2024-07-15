@@ -1,0 +1,15 @@
+<mat-card *ngIf="!folder">
+  <a routerLink="{{ link }}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: !!folder }" class="nav-item">
+    <mat-icon>{{ icon }}</mat-icon>
+    <span>{{ label }}</span>
+  </a>
+</mat-card>
+
+<mat-accordion *ngIf="folder" [@.disabled]="disableAnimation">
+  <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ label }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <ng-content></ng-content>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,143 @@
+<div class="register-form">
+  <h2>Create an account</h2>
+
+  <mat-stepper orientation="vertical" [linear]="true" #stepper>
+    <mat-step [stepControl]="nameGroup">
+      <form [formGroup]="nameGroup">
+        <ng-template matStepLabel>Personal information</ng-template>
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input
+            matInput
+            required
+            maxlength="50"
+            type="text"
+            autocomplete="given-name"
+            formControlName="firstname">
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Last name</mat-label>
+          <input
+            matInput
+            required
+            maxlength="50"
+            type="text"
+            autocomplete="family-name"
+            formControlName="lastname">
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            email
+            required
+            maxlength="320"
+            type="email"
+            autocomplete="email"
+            formControlName="email">
+        </mat-form-field>
+        
+        <div>
+          <button mat-stroked-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="accountInfoGroup">
+      <form [formGroup]="accountInfoGroup" class="terms-form">
+        <ng-template matStepLabel>Account information</ng-template>
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            required
+            maxlength="50"
+            type="text"
+            autocomplete="username"
+            formControlName="username">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            required
+            type="password"
+            autocomplete="new-password"
+            formControlName="password">
+        </mat-form-field>
+        <div
+          *ngIf="(
+            accountInfoGroup.get('password')!.dirty ||
+            accountInfoGroup.get('password')!.touched
+          ) && accountInfoGroup.get('password')!.invalid"
+          [innerHtml]="getPasswordErrors()"
+          class="password-error-text">
+        </div>
+
+        <mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input
+            matInput
+            required
+            type="password"
+            autocomplete="new-password"
+            formControlName="confirmPassword">
+        </mat-form-field>
+        <div
+          *ngIf="(
+            accountInfoGroup.get('confirmPassword')!.dirty || accountInfoGroup.get('confirmPassword')
+          ) && accountInfoGroup.get('confirmPassword')!.invalid"
+          [innerHtml]="getConfirmPasswordError()"
+          class="password-error-text">
+        </div>
+
+        <!-- TODO: uncomment this if the app is going to be used by the general public -->
+        <!-- <p class="align-left">
+          <a class="bs-link" (click)="openTermsDialog()">View Terms of Use</a>
+        </p> -->
+
+        <!-- TODO: uncomment this if the app is going to be used by the general public -->
+        <!-- <p class="align-left">
+          <a class="bs-link" (click)="openPrivacyDialog()">View Privacy Policy</a>
+        </p> -->
+        
+        <!-- TODO: uncomment this if the app is going to be used by the general public -->
+        <!-- <p class="checkbox-container">
+          <mat-checkbox formControlName="accept">
+            I have read and accept the Terms of Use.
+          </mat-checkbox>
+        </p> -->
+        
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button color="primary" mat-button (click)="register()">Register</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+
+  <p class="help-text">Already have an account? <a routerLink="/auth/login" class="bs-link">Login here</a>.</p>
+</div>
+
+<!-- TODO: uncomment this if the app is going to be used by the general public -->
+<!-- <a href="https://app.termly.io/notify/21747064-79f3-4373-8daa-090f67164a1e" class="dsar-link bs-link">Do not sell my info</a> -->
+
+<ng-template #privacyDialogRef>
+  <mat-dialog-content>
+    <app-privacy-policy [showBack]="false"></app-privacy-policy>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #termsDialogRef>
+  <mat-dialog-content>
+    <app-terms-of-use [showBack]="false"></app-terms-of-use>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</ng-template>

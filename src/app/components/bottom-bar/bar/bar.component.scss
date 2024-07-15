@@ -1,0 +1,21 @@
+@use '/src/assets/styles/variables.scss' as *;
+
+:host {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $bottom-bar-height;
+  padding-top: $bottom-bar-padding-top;
+  box-shadow: black 0 2px 5px;
+  background-color: white;
+  z-index: 2;
+}
+
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 1px;
+  max-width: 600px;
+  margin: auto;
+}

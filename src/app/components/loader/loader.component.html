@@ -1,0 +1,7 @@
+<div *ngIf="(fullRequests$ | async)! > 0" class="full-screen-loader">
+  <mat-spinner aria-label="loading indicator"></mat-spinner>
+</div>
+
+<div *ngIf="(smallRequests$ | async)! > 0">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

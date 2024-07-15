@@ -1,0 +1,85 @@
+@use '/src/assets/styles/variables.scss' as *;
+@use '/src/assets/styles/mixins.scss' as *;
+
+.register-form {
+  text-align: center;
+  width: 50%;
+  max-width: 500px;
+  margin: auto;
+
+  @include mobile-styles {
+    width: 100%;
+  }
+}
+
+mat-form-field {
+  display: block;
+}
+
+.actions {
+  text-align: center;
+}
+
+.help-text {
+  margin-top: 10px;
+}
+
+.password-error-text {
+  color: $danger-color;
+  text-align: left;
+}
+
+.subscription-details-header {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.subscription-details {
+  max-height: 250px;
+  overflow: auto;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+:host::ng-deep .terms-form.ng-invalid.ng-submitted mat-checkbox .mat-checkbox-frame,
+:host::ng-deep .terms-form.ng-invalid.ng-touched mat-checkbox .mat-checkbox-frame {
+  border-color: $danger-color;
+}
+
+:host::ng-deep .terms-form.ng-invalid.ng-submitted mat-checkbox .mat-checkbox-label,
+:host::ng-deep .terms-form.ng-invalid.ng-touched mat-checkbox .mat-checkbox-label {
+  color: $danger-color;
+}
+
+mat-radio-group {
+  text-align: left;
+}
+
+.price-title {
+  font-weight: bold;
+}
+
+.price-title.premium {
+  font-size: 0.95rem;
+}
+
+.price-radio span {
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 53%);
+}
+
+.checkbox-container {
+  margin-top: 12px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.dsar-link {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  left: 0;
+  text-align: center;
+}
