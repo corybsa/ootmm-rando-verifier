@@ -1,1 +1,125 @@
-<p>home works!</p>
+<app-rando-verifier (fileParsed)="runChecks()">
+    @if(isFileUploaded) {
+        <div class="options">
+            <div>
+                <div>
+                    <p>Required items search</p>
+                    <mat-form-field>
+                        <mat-label>Required item search</mat-label>
+                        <input
+                        matInput
+                        type="text"
+                        placeholder="Required item"
+                        aria-label="Required item"
+                        [matAutocomplete]="itemAutoComplete"
+                        [formControl]="itemsControl"
+                        />
+                        <mat-autocomplete #itemAutoComplete="matAutocomplete" (optionSelected)="addRequiredItem($event)">
+                            @for(option of filteredItems | async; track option) {
+                                <mat-option [value]="option">{{ option }}</mat-option>
+                            }
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <div class="header-with-tooltip">
+                        <span>Selected required items</span>
+                        <mat-icon matTooltip="These items will be checked if they are locked behind impossible skulltulas">help</mat-icon>
+                    </div>
+                    <mat-list>
+                        @for(item of randoVerifier.getRequiredItems(); track item) {
+                            <mat-list-item>
+                                <div class="list-item-info">
+                                    <span>{{ item }}</span>
+                                    <button mat-icon-button (click)="removeRequiredItem(item)">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </div>
+                            </mat-list-item>
+                        }
+                    </mat-list>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>Custom location requirements:</p>
+                    <mat-form-field>
+                        <mat-label>Location search</mat-label>
+                        <input
+                        matInput
+                        type="text"
+                        placeholder="Location"
+                        aria-label="Location"
+                        [matAutocomplete]="locationAutoComplete"
+                        [formControl]="locationsControl"
+                        />
+                        <mat-autocomplete #locationAutoComplete="matAutocomplete" (optionSelected)="addRequirement()">
+                            @for(option of filteredLocations | async; track option) {
+                                <mat-option [value]="option">{{option}}</mat-option>
+                            }
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Item search</mat-label>
+                        <input
+                        matInput
+                        type="text"
+                        placeholder="Required item"
+                        aria-label="Required item"
+                        [matAutocomplete]="requirementAutoComplete"
+                        [formControl]="requirementsControl"
+                        />
+                        <mat-autocomplete #requirementAutoComplete="matAutocomplete" (optionSelected)="addRequirement()">
+                            @for(option of filteredRequirements | async; track option) {
+                                <mat-option [value]="option">{{ option }}</mat-option>
+                            }
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <div class="header-with-tooltip">
+                        <span>Selected locations</span>
+                        <mat-icon matTooltip="These locations will be checked if they contain the items listed">help</mat-icon>
+                    </div>
+                    @for(requirement of getRequirements(); track $index) {
+                        <div>
+                            <p>{{ requirement[0] }}</p>
+                            <mat-chip-set aria-label="Fish selection">
+                                @for(item of requirement[1]; track $index) {
+                                    <mat-chip (removed)="removeLocationRequirement(requirement[0], item)">
+                                        {{ item }}
+                                        <button matChipRemove [attr.aria-label]="'remove ' + item">
+                                            <mat-icon>cancel</mat-icon>
+                                        </button>
+                                    </mat-chip>
+                                }
+                            </mat-chip-set>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</app-rando-verifier>
+
+@if(isFileUploaded) {
+    <hr>
+    
+    @if(impossibleReason === null) {
+        <p>Seed should be possible :)</p>
+    } @else {
+        <h2 class="results-warning">!!! Warning !!! Potential spoilers ahead!!!</h2>
+        <mat-accordion>
+            <mat-expansion-panel
+                [expanded]="panelOpenState()"
+                (opened)="panelOpenState.set(true)"
+                (closed)="panelOpenState.set(false)"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Results</mat-panel-title>
+                </mat-expansion-panel-header>
+                <pre>{{ impossibleReason.trim() }}</pre>
+            </mat-expansion-panel>
+        </mat-accordion>
+    }
+}

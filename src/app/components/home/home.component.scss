@@ -1,0 +1,36 @@
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    mat-form-field {
+        width: 80%;
+    }
+
+    mat-list-item {
+        .list-item-info {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+        }
+    }
+
+    .header-with-tooltip {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 1rem;
+        align-items: center;
+    }
+}
+
+hr {
+    margin: 20px 0;
+}
+
+.results-warning {
+    color: red;
+}

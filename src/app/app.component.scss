@@ -1,6 +1,8 @@
+@use '/src/assets/styles/variables.scss' as *;
+
 #page-container {
   padding: 16px;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: calc(100% - 152px);
+  max-height: calc(100% - (82px + $bottom-bar-height-total));
 }

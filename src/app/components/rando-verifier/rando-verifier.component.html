@@ -1,0 +1,11 @@
+<div class="upload">
+    <h2>Upload spoiler log:</h2>
+    <input type="file" hidden="true" #seedFile (change)="readFile(seedFile)">
+    <button mat-raised-button (click)="seedFile.click()">Choose file...</button>
+</div>
+
+<ng-content></ng-content>
+
+@if(file) {
+    <button mat-raised-button type="submit" (click)="readFile(seedFile)">Verify seed</button>
+}

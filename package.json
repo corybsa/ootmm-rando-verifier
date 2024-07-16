@@ -19,7 +19,8 @@
     "copy-files": "npm run copy-config && npm run copy-email-templates",
     "copy-config": "xcopy /Y .\\server\\config\\.env .\\dist-server\\config\\",
     "copy-email-templates": "xcopy /E/Y .\\server\\email-templates\\* .\\dist-server\\email-templates\\",
-    "stripe-listener": "~/Downloads/stripe.exe listen --forward-to localhost:8081/stripehook"
+    "stripe-listener": "~/Downloads/stripe.exe listen --forward-to localhost:8081/stripehook",
+    "s3": "npm run build-prod && aws s3 rm --recursive s3://therealuncleguy.com/ && aws s3 cp --recursive ./dist s3://therealuncleguy.com/"
   },
   "private": true,
   "dependencies": {
